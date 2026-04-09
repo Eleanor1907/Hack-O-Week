@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS | Futuristic Web Dev Bootcamp</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Dynamic Parallax Background -->
+    <div id="parallax-bg" class="parallax-bg"></div>
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="glow-orb orb-3"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar glass-effect" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">NEXUS<span>.dev</span></a>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#timeline">Curriculum</a></li>
+                <li><a href="#stats">Stats</a></li>
+                <li><a href="#testimonials">Pilots</a></li>
+            </ul>
+            <a href="#cta" class="nav-btn btn-glow">INITIALIZE</a>
+            <div class="mobile-menu-btn"><i class='bx bx-menu'></i></div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu glass-effect">
+        <ul>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#timeline">Curriculum</a></li>
+            <li><a href="#stats">Stats</a></li>
+            <li><a href="#testimonials">Pilots</a></li>
+            <li><a href="#cta" class="btn-glow">INITIALIZE</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="container hero-content">
+            <div class="hero-text animate-fade-in-up">
+                <div class="tech-badge">SYS.READY // v2.0</div>
+                <h1 class="glitch-text" data-text="ENTER THE MATRIX">ENTER THE MATRIX</h1>
+                <h2>OF MODERN WEB DEVELOPMENT</h2>
+                <p>Upload the skills of a Full-Stack developer directly into your brain. A 12-week intensive neural-training bootcamp powered by future-proof tech stacks.</p>
+                <div class="hero-actions">
+                    <a href="#cta" class="btn-cyber">BEGIN UPLOAD <i class='bx bx-chevron-right'></i></a>
+                    <a href="#timeline" class="btn-outline-cyber">VIEW SCHEMATICS</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Progress / Stats Section -->
+    <section class="stats-section" id="stats">
+        <div class="container container-grid stats-grid">
+            <div class="stat-card glass-panel animate-slide-up">
+                <i class='bx bx-data'></i>
+                <h3 class="counter" data-target="15000">0</h3>
+                <p>Lines of Code Written</p>
+                <div class="progress-bar-container"><div class="progress-bar" style="width: 100%;"></div></div>
+            </div>
+            <div class="stat-card glass-panel animate-slide-up delay-1">
+                <i class='bx bx-user-circle'></i>
+                <h3 class="counter" data-target="2048">0</h3>
+                <p>Active Pilots (Students)</p>
+                <div class="progress-bar-container"><div class="progress-bar" style="width: 85%;"></div></div>
+            </div>
+            <div class="stat-card glass-panel animate-slide-up delay-2">
+                <i class='bx bx-target-lock'></i>
+                <h3><span class="counter" data-target="98">0</span>%</h3>
+                <p>Mission Success (Placement)</p>
+                <div class="progress-bar-container"><div class="progress-bar" style="width: 98%;"></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features / Interactive Cards -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header center animate-fade-in">
+                <h2 class="section-title">SYSTEM <span class="gradient-text">FEATURES</span></h2>
+            </div>
+            <div class="features-grid">
+                <!-- Card 1 -->
+                <div class="interactive-card glass-panel animate-slide-up hover-tilt">
+                    <div class="card-glow"></div>
+                    <div class="card-icon"><i class='bx bx-code-curly'></i></div>
+                    <h3>Advanced Syntax</h3>
+                    <p>Master ECMAScript modules, WebGL, and complex state architectures. We don't teach basics; we engineer experts.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="interactive-card glass-panel animate-slide-up delay-1 hover-tilt">
+                    <div class="card-glow"></div>
+                    <div class="card-icon"><i class='bx bx-server'></i></div>
+                    <h3>Serverless Architecture</h3>
+                    <p>Deploy scalable cloud functions. Experience the power of modern decentralized backends and edge computing.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="interactive-card glass-panel animate-slide-up delay-2 hover-tilt">
+                    <div class="card-glow"></div>
+                    <div class="card-icon"><i class='bx bx-cube-alt'></i></div>
+                    <h3>3D Rendering</h3>
+                    <p>Incorporate Three.js and WebXR into your web apps. Build interfaces that transcend flat screens.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Curriculum Timeline -->
+    <section class="curriculum" id="timeline">
+        <div class="container container-sm">
+            <div class="section-header animate-fade-in">
+                <h2 class="section-title">TRAINING <span class="gradient-text">TIMELINE</span></h2>
+            </div>
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+                
+                <div class="timeline-item animate-slide-right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass-panel">
+                        <div class="time-badge">Phase 01 // Weeks 1-4</div>
+                        <h3>UI/UX Architecture & Core Protocols</h3>
+                        <p>Constructing the visual skeleton. Advanced HTML5 APIs, CSS Grid geometry, and CSS custom property architecture.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item animate-slide-left right-side">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass-panel">
+                        <div class="time-badge">Phase 02 // Weeks 5-8</div>
+                        <h3>Logic Processing (JavaScript & React)</h3>
+                        <p>Implementing neural pathways. Deep DOM manipulation, asynchronous network requests, React virtual DOM algorithms.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item animate-slide-right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass-panel">
+                        <div class="time-badge">Phase 03 // Weeks 9-11</div>
+                        <h3>Backend Data Nodes (Node.js)</h3>
+                        <p>Establishing central servers. Auth protocols via JWT, REST APIs, and NoSQL data structures with MongoDB.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item animate-slide-left right-side">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass-panel">
+                        <div class="time-badge">Phase 04 // Week 12</div>
+                        <h3>Deployment Sequence</h3>
+                        <p>Launch protocols engaged. CI/CD pipelines, Docker containerization, and staging directly to the cloud.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header center animate-fade-in">
+                <h2 class="section-title">PILOT <span class="gradient-text">TRANSMISSIONS</span></h2>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card glass-panel animate-slide-up">
+                    <div class="quote-mark">"</div>
+                    <p class="transmission-text">"System integration complete. The curriculum was rigorous but the knowledge transfer was flawless. Currently stationed at an AI startup."</p>
+                    <div class="user-id">
+                        <div class="avatar"><img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop" alt="User Alpha"></div>
+                        <div class="user-info">
+                            <h4>Subject: 78-Alpha</h4>
+                            <span>Full-Stack Engineer</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card glass-panel animate-slide-up delay-1">
+                    <div class="quote-mark">"</div>
+                    <p class="transmission-text">"Upgraded my legacy hardware. The React and Node servers modules rewired my entire approach to web architecture. Highly recommended."</p>
+                    <div class="user-id">
+                        <div class="avatar"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop" alt="User Beta"></div>
+                        <div class="user-info">
+                            <h4>Subject: 42-Beta</h4>
+                            <span>UI Developer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="cta">
+        <div class="container">
+            <div class="cta-box glass-panel animate-fade-in">
+                <h2 class="glitch-text" data-text="READY TO UPGRADE?">READY TO UPGRADE?</h2>
+                <p>Join the next wave of engineers building the decentralized web. Secure your node now.</p>
+                <form class="cta-form">
+                    <div class="input-glow-wrapper">
+                        <i class='bx bx-envelope'></i>
+                        <input type="email" placeholder="ENTER COMM-LINK (EMAIL)" required>
+                    </div>
+                    <button type="submit" class="btn-cyber">INITIALIZE UPLOAD</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="glass-effect">
+        <div class="container footer-content">
+            <div class="brand">
+                <a href="#" class="logo">NEXUS<span>.dev</span></a>
+                <p>Forging the architects of the digital tomorrow.</p>
+            </div>
+            <div class="socials">
+                <a href="#" class="cyber-icon"><i class='bx bxl-github'></i></a>
+                <a href="#" class="cyber-icon"><i class='bx bxl-discord-alt'></i></a>
+                <a href="#" class="cyber-icon"><i class='bx bxl-twitter'></i></a>
+            </div>
+        </div>
+        <div class="footer-border"></div>
+        <div class="container text-center text-muted">
+            <p>CYCLE 2026 // NEXUS PROTOCOL. ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

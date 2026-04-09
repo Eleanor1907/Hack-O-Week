@@ -1,0 +1,396 @@
+:root {
+  --bg-dark: #1e1814;
+  --text-dark: #3a2b22;
+  --text-light: #6a5342;
+  --paper-bg: #e6d8c3;
+  --paper-edge: #d1c0a5;
+  --accent-color: #8c2a2a;
+  --primary-font: 'Lora', serif;
+  --title-font: 'Cinzel', serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+  font-family: var(--primary-font);
+  line-height: 1.6;
+}
+
+/* Typography */
+h1, h2, h3 { font-family: var(--title-font); font-weight: 600; }
+button, input { font-family: var(--primary-font); }
+
+/* Navigation */
+.top-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 60px;
+  background: rgba(30, 24, 20, 0.95);
+  border-bottom: 2px solid #3a2b22;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  z-index: 100;
+}
+
+.nav-title {
+  color: var(--paper-bg);
+  font-family: var(--title-font);
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+}
+
+.nav-btn {
+  background: transparent;
+  color: var(--paper-bg);
+  border: 1px solid var(--paper-edge);
+  padding: 5px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
+.nav-btn:hover, .nav-btn.playing {
+  background: var(--paper-bg);
+  color: var(--text-dark);
+}
+
+/* Utilities */
+.hidden {
+  display: none !important;
+}
+.scrollable {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--text-light) transparent;
+}
+.scrollable::-webkit-scrollbar { width: 6px; }
+.scrollable::-webkit-scrollbar-thumb { background: var(--text-light); border-radius: 3px; }
+
+.screen-flex {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 60px; /* offset nav */
+}
+
+/* Intro Screen */
+#intro-screen {
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.closed-book {
+  width: 300px;
+  height: 420px;
+  background: #392b23;
+  border-radius: 5px 15px 15px 5px;
+  border: 3px solid #291d17;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 10px 10px 30px rgba(0,0,0,0.8);
+  position: relative;
+  text-align: center;
+}
+
+.closed-book::before {
+  content: '';
+  position: absolute;
+  left: 10px; top: 0; bottom: 0; width: 4px;
+  background: rgba(0,0,0,0.3);
+}
+
+.cover-content h1 {
+  color: var(--paper-bg);
+  font-size: 2.2rem;
+  margin-bottom: 5px;
+}
+.cover-content p {
+  color: var(--paper-edge);
+  margin-bottom: 30px;
+  font-style: italic;
+}
+
+.primary-btn {
+  background: var(--paper-bg);
+  color: var(--text-dark);
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 3px;
+  cursor: pointer;
+  font-family: var(--title-font);
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+.primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+}
+
+/* Main Library Interface */
+#library-interface {
+  min-height: 100vh;
+  padding: 80px 20px 20px 20px; /* offset nav */
+  display: flex;
+  justify-content: center;
+  opacity: 0;
+  animation: fadeIn 0.8s forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+.book-layout {
+  display: flex;
+  width: 100%;
+  max-width: 1100px;
+  background: var(--paper-bg);
+  border-radius: 8px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+  /* slight texture */
+  background-image: repeating-linear-gradient(rgba(0,0,0,0.02) 0px, transparent 1px, transparent 2px);
+}
+
+.book-spine-divider {
+  width: 30px;
+  background: linear-gradient(to right, rgba(0,0,0,0.1), rgba(255,255,255,0.4), rgba(0,0,0,0.1));
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+}
+
+.page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  /* constrain height so inner scrolls */
+  height: calc(100vh - 120px);
+  min-height: 500px;
+}
+
+.page-inner {
+  padding: 40px;
+  flex: 1;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--paper-edge);
+  padding-bottom: 10px;
+  color: var(--text-dark);
+}
+
+/* Left Page Elements */
+.search-container {
+  margin-bottom: 30px;
+}
+
+#search-input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid var(--paper-edge);
+  background: rgba(255,255,255,0.4);
+  border-radius: 4px;
+  font-size: 1rem;
+  color: var(--text-dark);
+  outline: none;
+}
+
+#search-input:focus {
+  border-color: var(--accent-color);
+  background: #fff;
+}
+
+.categories-nav h3 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: var(--text-light);
+}
+
+#categories-list {
+  list-style: none;
+}
+
+.category-item {
+  padding: 12px 15px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  border-left: 3px solid transparent;
+  transition: background 0.2s, border-color 0.2s;
+  font-size: 1.05rem;
+  background: rgba(255,255,255,0.1);
+}
+
+.category-item:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+.category-item.active {
+  border-left-color: var(--accent-color);
+  background: rgba(255,255,255,0.5);
+  font-weight: 600;
+  color: var(--accent-color);
+}
+
+/* Right Page Elements */
+.right-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.count {
+  font-style: italic;
+  color: var(--text-light);
+}
+
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  padding-bottom: 20px;
+}
+
+.book-card {
+  background: rgba(255,255,255,0.3);
+  border: 1px solid var(--paper-edge);
+  border-radius: 4px;
+  padding: 15px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.book-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  background: rgba(255,255,255,0.6);
+}
+
+.book-title {
+  font-family: var(--title-font);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: var(--text-dark);
+}
+
+.book-author {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 200;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  opacity: 0;
+  animation: fadeIn 0.3s forwards;
+}
+
+.modal-content {
+  background: var(--paper-bg);
+  width: 100%;
+  max-width: 500px;
+  padding: 30px;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  border: 1px solid var(--paper-edge);
+  /* pop-in animation */
+  transform: translateY(20px);
+  animation: slideUp 0.3s forwards ease-out;
+}
+
+@keyframes slideUp {
+  to { transform: translateY(0); }
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px; right: 20px;
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  color: var(--text-light);
+  cursor: pointer;
+  line-height: 1;
+}
+
+.close-btn:hover {
+  color: var(--accent-color);
+}
+
+.modal-meta {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.modal-meta span {
+  background: rgba(0,0,0,0.05);
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  border: 1px solid var(--paper-edge);
+}
+
+.modal-content hr {
+  border: none;
+  border-top: 1px solid var(--paper-edge);
+  margin-bottom: 15px;
+}
+
+.modal-desc {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+  .book-layout {
+    flex-direction: column;
+  }
+  .book-spine-divider {
+    width: 100%;
+    height: 10px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(255,255,255,0.2), rgba(0,0,0,0.1));
+  }
+  .page {
+    height: auto;
+    min-height: auto;
+  }
+  /* On mobile, left page (nav) shouldn't scroll independently but take up space, 
+     or standard flow. Let's make it standard flow so body scrolls */
+  body {
+    overflow-y: auto; /* allow body scroll on mobile */
+  }
+  #library-interface {
+    padding-bottom: 50px;
+  }
+  .page-inner {
+    padding: 20px;
+    /* remove independent scroll */
+    overflow-y: visible;
+  }
+}
