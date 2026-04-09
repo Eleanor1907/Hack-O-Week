@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover Amazing Products | LuxeShop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Ionicons for modern icons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">LUXE<span>SHOP</span>.</a>
+            
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#products">Products</a>
+            </div>
+
+            <div class="nav-actions">
+                <button id="theme-toggle" class="icon-btn" aria-label="Toggle Dark Mode">
+                    <ion-icon name="moon-outline" class="moon-icon"></ion-icon>
+                    <ion-icon name="sunny-outline" class="sun-icon"></ion-icon>
+                </button>
+                <button id="cart-toggle" class="icon-btn" aria-label="Open Cart">
+                    <ion-icon name="cart-outline"></ion-icon>
+                    <span id="cart-badge" class="badge">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="hero-title">Discover Amazing Products</h1>
+            <p class="hero-subtitle">Curated just for you. Explore the best quality at the best prices.</p>
+            
+            <div class="hero-search">
+                <ion-icon name="search-outline"></ion-icon>
+                <input type="text" id="hero-search-input" placeholder="Search for headphones, watches...">
+                <button class="btn btn-primary" onclick="scrollAndFocusMainSearch()">Shop Now</button>
+            </div>
+        </div>
+        <div class="hero-overlay"></div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-container" id="products">
+        
+        <!-- Mobile Filter Toggle Button -->
+        <div class="mobile-filter-bar hidden-desktop">
+            <div class="toolbar-search flex-1">
+                <ion-icon name="search-outline"></ion-icon>
+                <input type="text" id="main-search-input-mobile" placeholder="Search products...">
+            </div>
+            <button class="btn btn-outline" id="mobile-filter-btn">
+                <ion-icon name="options-outline"></ion-icon> Filters
+            </button>
+        </div>
+
+        <div class="main-layout">
+            <!-- Filter Sidebar -->
+            <div class="filter-overlay" id="filter-overlay"></div>
+            <aside class="filter-sidebar" id="filter-sidebar">
+                <div class="filter-header hidden-desktop">
+                    <h2>Filters</h2>
+                    <button class="close-btn" id="close-filter-btn"><ion-icon name="close-outline"></ion-icon></button>
+                </div>
+                
+                <div class="filter-content">
+                    <div class="filter-section hidden-mobile">
+                        <div class="search-box">
+                            <ion-icon name="search-outline"></ion-icon>
+                            <input type="text" id="main-search-input" placeholder="Search products...">
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
+                        <h3>Categories</h3>
+                        <div class="checkbox-group">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" value="Electronics" class="category-checkbox">
+                                <span class="checkmark"></span>
+                                Electronics
+                            </label>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" value="Fashion" class="category-checkbox">
+                                <span class="checkmark"></span>
+                                Fashion
+                            </label>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" value="Accessories" class="category-checkbox">
+                                <span class="checkmark"></span>
+                                Accessories
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
+                        <h3>Price Range</h3>
+                        <div class="range-group">
+                            <input type="range" id="price-range" min="0" max="10000" step="500" value="10000">
+                            <div class="range-labels">
+                                <span>₹0</span>
+                                <span id="price-display">₹10000</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
+                        <h3>Rating</h3>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" id="rating-filter">
+                            <span class="checkmark"></span>
+                            4★ & above
+                        </label>
+                    </div>
+
+                    <button class="btn btn-outline w-100 reset-btn" id="reset-filters-btn">Reset All</button>
+                    <!-- Apply btn for mobile -->
+                    <button class="btn btn-primary w-100 hidden-desktop apply-filter-btn" id="apply-filter-btn">Apply Filters</button>
+                </div>
+            </aside>
+
+            <!-- Product Area -->
+            <section class="product-area">
+                <div class="product-header">
+                    <h2>Our Products <span id="product-count" class="text-light text-sm">(0)</span></h2>
+                    <div class="sort-box">
+                        <label for="sort-select"><ion-icon name="swap-vertical-outline"></ion-icon> Sort:</label>
+                        <select id="sort-select" class="custom-select">
+                            <option value="default">Featured</option>
+                            <option value="price-low">Price: Low-High</option>
+                            <option value="price-high">Price: High-Low</option>
+                            <option value="rating">Top Rated</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Product Grid -->
+                <div class="product-grid" id="product-grid">
+                    <!-- Products will be injected here by JS -->
+                </div>
+
+                <!-- No Results -->
+                <div id="no-results" class="no-results hidden">
+                    <ion-icon name="sad-outline"></ion-icon>
+                    <h2>No products found</h2>
+                    <p>Try adjusting your search or filters.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Side Cart -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+    <aside class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h2>Your Cart (<span id="cart-count">0</span>)</h2>
+            <button class="close-btn" id="close-cart"><ion-icon name="close-outline"></ion-icon></button>
+        </div>
+        
+        <div class="cart-items" id="cart-items">
+            <!-- Cart items injected here -->
+        </div>
+        
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total</span>
+                <span class="total-price" id="cart-total-price">₹0</span>
+            </div>
+            <button class="btn btn-primary w-100" id="checkout-btn">Checkout</button>
+        </div>
+    </aside>
+
+    <!-- Product Detail Modal -->
+    <div class="modal-overlay" id="modal-overlay"></div>
+    <div class="product-modal" id="product-modal">
+        <button class="modal-close" id="close-modal"><ion-icon name="close-outline"></ion-icon></button>
+        <div class="modal-content">
+            <div class="modal-image-container">
+                <img id="modal-image" src="" alt="Product">
+                <span class="modal-badge hidden" id="modal-badge">Sale</span>
+            </div>
+            <div class="modal-details">
+                <div class="modal-category" id="modal-category">Category</div>
+                <h2 class="modal-title" id="modal-title">Product Name</h2>
+                <div class="modal-rating" id="modal-rating"></div>
+                <div class="modal-price" id="modal-price">₹0</div>
+                <p class="modal-description" id="modal-description">Product description goes here.</p>
+                <div class="modal-action">
+                    <button class="btn btn-primary w-100" id="modal-add-to-cart">
+                        <ion-icon name="cart-outline"></ion-icon> Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Weather</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+</head>
+<body class="theme-default">
+    <!-- Dynamic Weather Animations Container -->
+    <div id="weather-animations" class="weather-anim-container">
+        <!-- JS will inject canvas or CSS elements here -->
+    </div>
+
+    <div class="app-wrapper">
+        <header>
+            <h1 class="logo">Weather<span class="neon-text">Now</span></h1>
+            <div class="controls">
+                <button id="unit-toggle" class="icon-btn glow-btn" title="Toggle °C / °F">°F</button>
+            </div>
+        </header>
+
+        <main class="main-layout">
+            <!-- Left Column: Search & Favorites & Map -->
+            <div class="side-panel">
+                <div class="search-container glass-panel">
+                    <div class="search-bar">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" id="city-input" placeholder="Search city..." autocomplete="off">
+                        <button id="search-btn" class="glow-btn">Search</button>
+                    </div>
+                    <button id="location-btn" class="glow-btn full-btn">
+                        <i class="fas fa-location-crosshairs"></i> Use My Location
+                    </button>
+                </div>
+
+                <div class="favorites-container glass-panel">
+                    <h3><i class="fas fa-star text-neon"></i> Saved Cities</h3>
+                    <div id="favorites-list" class="favorites-list">
+                        <!-- Fav items injected here -->
+                    </div>
+                    <button id="add-fav-btn" class="glow-btn full-btn mt-10 hidden">Save Current City</button>
+                </div>
+
+                <div class="map-container glass-panel">
+                    <div id="map"></div>
+                </div>
+            </div>
+
+            <!-- Right Column: Weather Data -->
+            <div class="weather-content glass-panel">
+                <div id="loading" class="state-message">
+                    <div class="spinner"></div>
+                    <p>Scanning atmosphere...</p>
+                </div>
+                
+                <div id="error-message" class="state-message error hidden">
+                    <i class="fas fa-circle-exclamation"></i>
+                    <p id="error-text">City not found.</p>
+                </div>
+
+                <div id="weather-panel" class="weather-panel hidden">
+                    <!-- Current Weather -->
+                    <div class="current-weather">
+                        <div class="location-header">
+                            <h2 id="city-name" class="city-name">--</h2>
+                            <p id="country-name" class="country-name">--</p>
+                            <p id="current-date" class="current-date">--</p>
+                        </div>
+
+                        <div class="temp-condition-wrapper">
+                            <div class="temp-display">
+                                <span id="temperature" class="temperature">0</span>
+                                <span class="unit" id="display-unit">°C</span>
+                            </div>
+                            
+                            <div class="condition-display">
+                                <i id="main-weather-icon" class="fas fa-sun animate-float"></i>
+                                <p id="weather-condition" class="condition-text">--</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Details Grid -->
+                    <div class="weather-details">
+                        <div class="detail-card">
+                            <i class="fas fa-temperature-half"></i>
+                            <div>
+                                <span class="label">Feels Like</span>
+                                <span class="value" id="feels-like">0°</span>
+                            </div>
+                        </div>
+                        <div class="detail-card">
+                            <i class="fas fa-droplet"></i>
+                            <div>
+                                <span class="label">Humidity</span>
+                                <span class="value" id="humidity">0%</span>
+                            </div>
+                        </div>
+                        <div class="detail-card">
+                            <i class="fas fa-wind"></i>
+                            <div>
+                                <span class="label">Wind Speed</span>
+                                <span class="value" id="wind-speed">0 km/h</span>
+                            </div>
+                        </div>
+                        <div class="detail-card">
+                            <i class="fas fa-gauge-high"></i>
+                            <div>
+                                <span class="label">Pressure</span>
+                                <span class="value" id="pressure">0 hPa</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hourly Forecast -->
+                    <div class="forecast-section">
+                        <h3 class="section-title"><i class="fas fa-clock text-neon"></i> Hourly Forecast</h3>
+                        <div class="hourly-grid" id="hourly-container">
+                            <!-- Hourly cards -->
+                        </div>
+                    </div>
+
+                    <!-- 5-Day Forecast -->
+                    <div class="forecast-section">
+                        <h3 class="section-title"><i class="fas fa-calendar-days text-neon"></i> 5-Day Forecast</h3>
+                        <div class="forecast-grid" id="forecast-container">
+                            <!-- Daily cards -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+    <script src="script.js"></script>
+</body>
+</html>

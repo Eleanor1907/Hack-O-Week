@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noir Feast | Luxury Dining</title>
+    <meta name="description" content="Indulge in luxury dining at Noir Feast. Experience exquisite flavors in a premium dark aesthetic setting.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div id="cursor" class="custom-cursor"></div>
+    <div id="cursor-follower" class="cursor-follower"></div>
+
+    <!-- Music Toggle -->
+    <button id="music-toggle" class="floating-btn" title="Toggle Music">
+        <i data-lucide="music"></i>
+    </button>
+    <audio id="bg-music" loop>
+        <source src="https://cdn.pixabay.com/audio/2022/01/18/audio_d0a13f69d2.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Navbar -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Noir Feast.</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="cart-icon-container" id="cart-btn">
+                <i data-lucide="shopping-bag" class="cart-icon"></i>
+                <span class="cart-badge" id="cart-badge">0</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Cart Drawer -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+    <div class="cart-drawer" id="cart-drawer">
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <button id="close-cart" class="close-btn"><i data-lucide="x"></i></button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Cart items will be rendered here -->
+        </div>
+        <div class="cart-footer">
+            <div class="total-container">
+                <span>Total:</span>
+                <span id="cart-total">₹0</span>
+            </div>
+            <button class="checkout-btn">Checkout</button>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <header id="home" class="hero">
+        <div class="hero-bg" id="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <!-- Particles -->
+        <div class="particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title" id="hero-title">Noir Feast</h1>
+            <p class="hero-tagline" id="hero-tagline">Indulge in Luxury Dining</p>
+            <a href="#menu" class="btn-primary">Explore Menu</a>
+        </div>
+    </header>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Exquisite Menu</h2>
+                <div class="divider"></div>
+            </div>
+            
+            <div id="menu-container" class="menu-categories">
+                <!-- Javascript will inject categories and items here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section text-center">
+        <div class="container">
+            <div class="section-title">
+                <h2>Reservations & Contact</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i data-lucide="map-pin"></i>
+                        <p>123 Luxury Avenue, Golden Estate, City</p>
+                    </div>
+                    <div class="info-item">
+                        <i data-lucide="phone"></i>
+                        <p>+91 98765 43210</p>
+                    </div>
+                    <div class="info-item">
+                        <i data-lucide="mail"></i>
+                        <p>reservations@noirfeast.com</p>
+                    </div>
+                </div>
+                <form class="contact-form glass-panel">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <input type="text" placeholder="Date & Time" required>
+                    <button type="submit" class="btn-primary w-100">Request Reservation</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Noir Feast. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Checkout Modal -->
+    <div class="modal-overlay" id="checkout-modal-overlay"></div>
+    <div class="checkout-modal glass-panel" id="checkout-modal">
+        <button id="close-checkout" class="close-btn modal-close"><i data-lucide="x"></i></button>
+        <h2 style="color: var(--gold); margin-bottom: 20px;">Checkout Summary</h2>
+        <div id="checkout-items" class="checkout-items-wrapper"></div>
+        <div class="payment-options">
+            <p style="margin-bottom: 10px; color: var(--text-muted);">Payment Method:</p>
+            <div class="pay-methods">
+                <button class="pay-btn active">Credit Card</button>
+                <button class="pay-btn">UPI / Wallet</button>
+            </div>
+        </div>
+        <div class="checkout-total-wrap">
+            <span>Total Amount:</span>
+            <span id="checkout-total-val" style="color: var(--gold); font-size: 1.5rem; font-weight: 700;">₹0</span>
+        </div>
+        <button class="btn-primary w-100" id="place-order-btn">Place Order</button>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="success-modal glass-panel" id="success-modal">
+        <div class="success-icon"><i data-lucide="check-circle" size="64"></i></div>
+        <h2 style="color: var(--gold); margin: 20px 0;">Order Placed Successfully!</h2>
+        <p style="color: var(--text-muted); margin-bottom: 30px;">Your luxury dining experience is being prepared.</p>
+        <button class="btn-primary" id="close-success-btn">Continue</button>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

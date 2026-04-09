@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Task Manager</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="light-mode">
+    <div class="app-container">
+        <!-- Header -->
+        <header>
+            <div class="header-top">
+                <h1>My Task Manager</h1>
+                <button class="icon-btn theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </div>
+            
+            <div class="progress-section">
+                <div class="progress-text" id="progress-text">0/0 tasks completed</div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Task Input -->
+        <section class="task-input-section card glass">
+            <div class="input-row main-input">
+                <input type="text" id="new-task-input" placeholder="What needs to be done?" autocomplete="off">
+                <button id="add-task-btn" class="primary-btn"><i class="fa-solid fa-plus"></i></button>
+            </div>
+            <div class="input-row advanced-input">
+                <div class="input-group">
+                    <i class="fa-solid fa-folder"></i>
+                    <select id="task-category">
+                        <option value="Personal">Personal</option>
+                        <option value="Work">Work</option>
+                        <option value="Study">Study</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <i class="fa-solid fa-calendar"></i>
+                    <input type="date" id="task-due-date">
+                </div>
+                <div class="input-group">
+                    <i class="fa-solid fa-flag"></i>
+                    <select id="task-priority">
+                        <option value="Low">Low 🟢</option>
+                        <option value="Medium" selected>Medium 🟡</option>
+                        <option value="High">High 🔴</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filters & Search -->
+        <section class="controls-section">
+            <div class="search-box glass">
+                <i class="fa-solid fa-search"></i>
+                <input type="text" id="search-input" placeholder="Search tasks...">
+            </div>
+            
+            <div class="filters glass">
+                <div class="filter-group">
+                    <select id="filter-status">
+                        <option value="All">All Status</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Completed">Completed</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <select id="filter-category">
+                        <option value="All">All Categories</option>
+                        <option value="Personal">Personal</option>
+                        <option value="Work">Work</option>
+                        <option value="Study">Study</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- Task List -->
+        <section class="task-list-section">
+            <ul id="task-list" class="task-list">
+                <!-- Task Items injected by JS -->
+            </ul>
+            <div class="empty-state" id="empty-state">
+                <img src="https://cdn-icons-png.flaticon.com/512/7486/7486744.png" alt="No tasks" />
+                <p>All caught up! Add a new task above.</p>
+            </div>
+        </section>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

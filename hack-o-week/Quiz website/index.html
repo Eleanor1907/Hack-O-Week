@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Quiz Challenge</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-mode">
+
+    <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Dark Mode">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <main class="app-container">
+        <!-- START SCREEN -->
+        <section id="start-screen" class="screen active">
+            <h1 class="main-title">Ultimate Quiz Challenge</h1>
+            <p class="subtitle">Test your knowledge and climb the leaderboard.</p>
+            
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" id="player-name" placeholder="Enter your name to begin..." autocomplete="off">
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-layer-group"></i>
+                <select id="category-select">
+                    <option value="" disabled selected>Select Category</option>
+                    <option value="tech">Technology</option>
+                    <option value="gk">General Knowledge</option>
+                    <option value="movies">Movies & Pop Culture</option>
+                </select>
+            </div>
+
+            <button id="start-btn" class="primary-btn pulse-glow">
+                Start Quiz <i class="fas fa-arrow-right"></i>
+            </button>
+
+            <button id="view-leaderboard-btn" class="secondary-btn">
+                <i class="fas fa-trophy"></i> View Leaderboard
+            </button>
+        </section>
+
+        <!-- QUIZ SCREEN -->
+        <section id="quiz-screen" class="screen hidden">
+            <div class="quiz-header">
+                <div class="score-display">
+                    <i class="fas fa-star text-yellow"></i> Score: <span id="current-score">0</span>
+                </div>
+                <div class="timer-display">
+                    <i class="fas fa-clock"></i> <span id="time-left">15</span>s
+                </div>
+            </div>
+
+            <div class="progress-bar-container">
+                <div id="progress-bar" class="progress-bar"></div>
+            </div>
+
+            <div class="question-container">
+                <h2 id="question-text" class="question-text">Loading question...</h2>
+            </div>
+
+            <div id="options-container" class="options-grid">
+                <!-- Options will be injected here -->
+            </div>
+
+            <div class="quiz-footer">
+                <button id="next-btn" class="primary-btn hidden">
+                    Next Question <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- RESULT SCREEN -->
+        <section id="result-screen" class="screen hidden">
+            <div class="result-icon pulse-glow">
+                <i id="result-icon" class="fas fa-award"></i>
+            </div>
+            <h2 id="result-message" class="result-message">Excellent!</h2>
+            <p class="final-score-text">You scored <span id="final-score" class="highlight">0</span> out of <span id="total-questions">0</span>.</p>
+            
+            <div class="leaderboard-container">
+                <h3>Top Scores <i class="fas fa-fire text-red"></i></h3>
+                <ul id="leaderboard-list">
+                    <!-- Leaderboard injected here -->
+                </ul>
+            </div>
+
+            <div class="action-buttons">
+                <button id="restart-btn" class="primary-btn">
+                    <i class="fas fa-redo"></i> Play Again
+                </button>
+                <button id="home-btn" class="secondary-btn">
+                    <i class="fas fa-home"></i> Home
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

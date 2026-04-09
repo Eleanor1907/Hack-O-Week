@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journey - Premium Travel Explorer</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor-glow"></div>
+
+    <!-- Loading Screen -->
+    <div id="loader" class="loader-screen">
+        <div class="loader-content">
+            <div class="compass-spinner">
+                <i class="fas fa-compass"></i>
+            </div>
+            <h2>Preparing your journey...</h2>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav id="navbar" class="glass-nav">
+        <div class="nav-container">
+            <a href="#" class="logo">Journey<span>.</span></a>
+            <div class="nav-links">
+                <a href="#" class="nav-link active">Map</a>
+                <a href="#destinations" class="nav-link">Destinations</a>
+                <a href="#about" class="nav-link">About</a>
+                <div class="nav-actions">
+                    <button id="back-to-map" class="btn-glass hidden"><i class="fas fa-arrow-left"></i> <span>Back</span></button>
+                    <button id="sound-toggle" class="btn-icon" aria-label="Toggle Ambient Sound"><i class="fas fa-volume-mute"></i></button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section id="map-section" class="map-container">
+            <div id="leaflet-map"></div>
+            <div id="map-vignette" class="map-vignette"></div>
+            
+            <div class="map-ui">
+                <h1 class="main-title">Explore The World</h1>
+                <p class="subtitle">Select a destination to begin your journey</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Side Panel Overlay -->
+    <div id="panel-overlay" class="panel-overlay"></div>
+
+    <!-- Country Detail Panel -->
+    <aside id="country-panel" class="side-panel glass-panel">
+        <div class="panel-inner" id="panel-content">
+            <!-- Dynamically injected content -->
+        </div>
+        <!-- Lightbox container -->
+        <div id="lightbox" class="lightbox">
+            <span class="lightbox-close"><i class="fas fa-times"></i></span>
+            <img class="lightbox-img" src="" alt="View">
+        </div>
+    </aside>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="script.js"></script>
+</body>
+</html>
